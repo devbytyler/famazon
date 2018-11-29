@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shop | Famazon</title>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+		<script src="javascripts/app.js"></script>
+	</head>
+	<body ng-app="famazon" ng-controller="MainCtrl">
+		<nav class="navbar navbar-expand-md navbar-dark">
+			<a class="navbar-brand" href="#">Famazon</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-item nav-link" href="/manage">Manage</a>
+					<a class="nav-item nav-link" href="/shop">Shop</a>
+				</div>
+			</div>
+		</nav>	
+
+		<div class="container py-5">
+			<h1>Famazon</h1>
+			<hr>
+
+			<div class="row">
+				<div class="col-12 col-md-4">
+					<h3>Products</h3>
+					<div class="card mb-3" ng-repeat="product in products | orderBy: 'name'">
+						<div class="card-body d-flex justify-content-between">
+							<div>
+								<input type="checkbox" ng-model="product.selected"> {{product.name}}
+								<div>Price: ${{product.price}}</div>
+							</div>
+							
+							<img class="product-image" src="{{product.imageUrl}}" alt="">
+						</div>
+					</div>
+					<button class="btn btn-primary" ng-click="doOrder()">
+						Submit Purchase
+					</button>
+				</div>
+				<div class="col-12 col-md-8">
+					<div class="card">
+						<div class="card-header">	
+							<h3>Shopping Cart</h3>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-4" ng-repeat="product in cart | orderBy:['name']">
+									<div class="card mb-3">
+										<div class="card-body">
+											<img class="product-image mx-auto" src="{{product.imageUrl}}" alt="">
+										</div>
+										<div class="card-footer">
+											<h6>{{product.name}}</h6>
+											<div>Price: ${{product.price}}</div>
+										</div>
+									</div>
+								</div>
+								<div ng-show="!cart.length">Your cart is empty</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>

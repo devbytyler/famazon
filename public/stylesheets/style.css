@@ -1,0 +1,35 @@
+/* .small-gray {
+  font-size: .8em;
+  color: #888;
+} */
+
+body {
+  background-color: #223;
+  color: white;
+}
+
+.navbar {
+  background-color: #112;
+}
+
+.card {
+  background-color: #334;
+}
+
+hr, .card-header, .card-footer, .form-control, .card {
+  border-color: rgba(255,255,255,0.1)
+}
+
+.form-control {
+  background-color: #292939;
+  color: white;
+}
+
+.form-control:focus {
+  background-color: #292939;
+  color: white;
+}
+
+.product-image {
+  max-height: 100px; 
+}
